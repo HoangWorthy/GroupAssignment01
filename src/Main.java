@@ -8,5 +8,6 @@ public class Main {
         borrow.addBook("hello1", library.getBooks());
         borrow.addBook("hello", library.getBooks());
         borrow.displayBorrowedBooks();
+        System.out.println("Hello world!");
     }
 }
