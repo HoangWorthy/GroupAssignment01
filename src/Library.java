@@ -1,15 +1,23 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 public class Library {
     private final String[] books = new String[1000];
+    private int size;
 
-    public void addBook(String title){
-        books[books.length-1] = title;
+    public Library() {
+        this.size = 0;
     }
 
-    public void getAllBooks(){
+    public String[] getBooks() {
+        return books;
+    }
+
+    public void addBook(String title){
+        books[size] = title;
+        size++;
+    }
+
+    public void displayAllBooks(){
         for(String title : books){
+            if(title==null) return;
             System.out.println(title);
         }
     }
