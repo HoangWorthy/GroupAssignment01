@@ -23,6 +23,7 @@ public class Library {
         if(size == books.length) generateNewArray();
         books[size] = title;
         size++;
+        System.out.println("Add book success");
     }
 
     public void displayAllBooks(){
@@ -41,7 +42,7 @@ public class Library {
     public void removeBook(String title){
         for(int i = 0;i < size;i++){
             if(books[i].equalsIgnoreCase(title)){
-                for(int j = i;j < size;j++){
+                for(int j = i;j < size-1;j++){
                     books[j] = books[j+1];
                 }
                 size--;

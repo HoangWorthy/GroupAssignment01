@@ -39,7 +39,7 @@ public class BorrowedBooks extends Library {
     public void traversal() {
         ListNode current = head;
         while (current != null) {
-            System.out.print(current.data + " ");
+            System.out.println(current.data);
             current = current.next;
         }
     }
@@ -78,6 +78,7 @@ public class BorrowedBooks extends Library {
             else if (book.equalsIgnoreCase(title)) {
                 insertEnd(title);
                 library.removeBook(title);
+                System.out.println("Borrow success");
                 return;
             }
         }
