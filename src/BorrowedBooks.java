@@ -1,7 +1,3 @@
-
-import java.util.LinkedList;
-import java.util.Scanner;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,18 +7,18 @@ import java.util.Scanner;
  *
  * @author Nguyen Anh Khoi
  */
-public class Borrowing extends Library {
+public class BorrowedBooks extends Library {
 
     private ListNode head;
 
-    private class ListNode {
+    private static class ListNode {
 
         private String data;
         private ListNode next;
 
         public ListNode(String data) {
             this.data = data;
-            this.next = next;
+            this.next = null;
         }
 
     }
@@ -48,14 +44,40 @@ public class Borrowing extends Library {
         }
     }
 
-    public void addBook(String title, String[] books) {
+    public boolean searchForBook(String book){
+        ListNode current = head;
+        while(current!= null && !current.data.equalsIgnoreCase(book)){
+            current = current.next;
+        }
+        return current != null;
+    }
 
+    public void removeBook(String book){
+        if(head == null) return;
+        if(head.data.equalsIgnoreCase(book)){
+            head = head.next;
+            return;
+        }
+        ListNode current = head;
+        while(current.next!= null && !current.next.data.equalsIgnoreCase(book)) {
+            current = current.next;
+        }
+        if(current.next == null){
+            current = null;
+            return;
+        }
+        current.next = current.next.next;
+    }
+
+    public void borrowBook(Library library, String title) {
+        String[] books = library.getBooks();
         for (String book : books) {
             if (book == null) {
                 break;
             }
-            if (book.equalsIgnoreCase(title)) {
+            else if (book.equalsIgnoreCase(title)) {
                 insertEnd(title);
+                library.removeBook(title);
                 return;
             }
         }
